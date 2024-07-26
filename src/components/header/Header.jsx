@@ -9,7 +9,9 @@ export default function Header() {
       <div className="flex gap-4">
         
         <a href="/">Home</a>
-        <a href="/about">About</a>
+        <a href="/movies">Movies</a>
+        <a href="/series">Series</a>
+        <a href="/users">Users</a>
       </div>
       <div className="flex items-center gap-4">
         <DarkModeSwitch/>
