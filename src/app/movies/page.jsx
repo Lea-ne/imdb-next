@@ -2,6 +2,9 @@
 
 export default function Movies() {
   return (
-    <div>Movies lists page</div>
+    <div>
+      <h1 className="text-2xl font-medium">Movies lists page</h1>
+      <p>Ici sera listé les films</p>
+    </div>
   )
 }
