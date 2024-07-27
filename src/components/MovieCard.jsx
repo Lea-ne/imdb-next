@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import {StarIcon} from '@heroicons/react/24/solid'
 
-export default function MovieCard({ result }) {
+export default function MovieCard({ result, url }) {
   return (
     <div>
-      <a href={`/movies/${result.id}`} className='group'>
+      <a href={url} className='group'>
       <Image
         src={`https://image.tmdb.org/t/p/original/${result.backdrop_path || result.poster__path}`}
         width={200}

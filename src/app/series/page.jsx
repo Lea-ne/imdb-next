@@ -1,6 +1,6 @@
-import React from 'react'
 import { fetchMovies } from "@/lib/tmdb_api_call";
-import MoviesResult from "@/components/MoviesResult";
+import SeriesResult from '@/components/SeriesResult';
+
 
 export default async function Series() {
     const results = await fetchMovies('tv/popular');
@@ -10,7 +10,7 @@ export default async function Series() {
       <div>
         <h1 className="text-2xl font-medium">Series list</h1>
         <div>
-          <MoviesResult results={results} />
+          <SeriesResult results={results}/>
         </div>
       </div>
     )
