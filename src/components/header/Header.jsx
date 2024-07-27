@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import DarkModeSwitch from './DarkModeSwitch';
-import SearchBox  from '../SearchBox';
+import SearchBox  from '../Search/SearchBox';
 
 
 export default function Header() {

@@ -1,4 +1,6 @@
+
 import MoviesResult from "@/components/MoviesSeries/MoviesResult";
+import SearchFilter from "@/components/Search/SearchFilter";
 const API_KEY = process.env.TMDB_API_KEY;
 
 export default async function SearchPage({ params }) {
@@ -19,6 +21,10 @@ export default async function SearchPage({ params }) {
 
     return (
         <div>
+            
+           <SearchFilter />
+
+
             {
                 results && results.length === 0 ? <h1>No result found</h1> : <MoviesResult results={results} />
             }
