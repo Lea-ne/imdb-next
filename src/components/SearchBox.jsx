@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 export default function SearchBox() {
     const [search, setSearch] = useState('');
 
@@ -11,17 +10,18 @@ export default function SearchBox() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = `/search?q=/${search}`
+        router.push(`/search/${search}`);
     };
 
-  return (
-    <form onSubmit={handleSubmit}>
-        <input 
-        type="text" 
-        placeholder='Search movie, serie, user...'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}/>
-        <button disabled={search === ''} className="disabled:text-gray-300">Search</button>
-    </form>
-  )
+    return (
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text" 
+                placeholder='Search movie, serie, user...'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
+            <button disabled={search === ''} className="disabled:text-gray-300">Search</button>
+        </form>
+    )
 }

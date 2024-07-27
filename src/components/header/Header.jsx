@@ -25,7 +25,7 @@ export default function Header() {
 
       {/* SearchBar */}
       <div>
-        <SearchBox />
+        <SearchBox placeholder="Search invoices..." />
       </div>
 
       {/* darkMode switch */}
