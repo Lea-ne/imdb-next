@@ -1,35 +1,15 @@
-import MovieResult from "@/components/MovieResult";
+import MoviesResult from "@/components/MoviesResult";
+import { fetchMovies } from "@/lib/tmdb_api_call";
 
-const API_KEY = process.env.TMDB_API_KEY;
 
 export default async function Home() {
 
-  try {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=fr-FR&page=1`
-    );
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    const results = data.results;
-    console.log(results);
+   const results = await fetchMovies('trending/all/week');
 
     return (
       <div>
-        <MovieResult results={results} />
+        <MoviesResult results={results} />
       </div>
     );
-  } 
-  
-  catch (error) {
-    console.error('Caught Error db');
-    return (
-      <p>Error</p>
-    );
-  }
+} 
 
-}

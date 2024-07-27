@@ -1,11 +1,11 @@
 
-export default function MovieResult({results}) {
+export default function MoviesResult({results}) {
   return (
     <div>
         {
         results.map((result) => (
             <div key={result.id}>
-                <h2>{result.original_title}</h2>
+                {result.original_title || result.original_name || "Titre non disponible"}
             </div>
         ))
         }
