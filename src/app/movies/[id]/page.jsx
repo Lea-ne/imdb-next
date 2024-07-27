@@ -19,10 +19,10 @@ export default async function MoviePage({params}) {
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster__path}`}
           width={500}
           height={300}
-          alt="Screenshots of the dashboard project showing desktop version"
+          alt="Image"
         /> 
         <div>
-          <h2>{movie.title}</h2>
+          <h2>{movie.title || movie.name}</h2>
           <p>{movie.overview}</p>
           <p>{movie.release_date || movie.first_air_date}</p>
           <div className='flex'><StarIcon className='w-4' />{movie.vote_average ? movie.vote_average.toFixed(1) : 'no grade'}</div>

@@ -13,7 +13,7 @@ export default function MovieCard({ result, url }) {
         alt="Screenshots of the dashboard project showing desktop version"
       />
       <div>
-        <h4>{result.original_title || result.original_name}</h4>
+        <h4>{result.title || result.name}</h4>
         <div className='flex'><StarIcon className='w-4' />{result.vote_average ? result.vote_average.toFixed(1) : 'no grade'}</div>
       </div>
       </a>

@@ -4,7 +4,7 @@ import SeriesResult from '@/components/SeriesResult';
 
 export default async function Series() {
     const results = await fetchMovies('tv/popular');
-    console.log(results);  // Ajoutez cette ligne pour déboguer
+    // console.log(results);  
   
     return (
       <div>
