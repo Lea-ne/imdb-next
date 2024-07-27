@@ -1,4 +1,4 @@
-import MoviesResult from "@/components/MoviesResult";
+import MoviesResult from "@/components/MoviesSeries/MoviesResult";
 import { fetchMovies } from "@/lib/tmdb_api_call";
 
 

@@ -1,5 +1,5 @@
 import { fetchMovies } from "@/lib/tmdb_api_call";
-import SeriesResult from '@/components/SeriesResult';
+import SeriesResult from '@/components/MoviesSeries/SeriesResult';
 
 
 export default async function Series() {

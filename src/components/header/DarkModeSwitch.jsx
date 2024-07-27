@@ -9,16 +9,21 @@ export default function DarkModeSwitch() {
     const {theme, setTheme, systemTheme} = useTheme()
     const currentTheme = theme === 'system' ? systemTheme : theme
 
-  return (
-    <div>
-        a
-        {
-            // condition for light or dark mode
-            currentTheme === 'dark' ? 
-            <SunIcon onClick={()=>setTheme('light')} className='text-xl cursor-pointer hover:text-amber-500'/>
-            : 
-            <MoonIcon onClick={()=>setTheme('dark')} className='text-xl cursor-pointer hover:text-amber-500'/>
-        }
-    </div>
-  )
+    return (
+        <div className="flex items-center">
+            {
+                // condition for light or dark mode
+                currentTheme === 'dark' ? 
+                <SunIcon 
+                    onClick={()=>setTheme('light')} 
+                    className="w-4 h-4 cursor-pointer text-xl hover:text-amber-500"
+                />
+                : 
+                <MoonIcon 
+                    onClick={()=>setTheme('dark')} 
+                    className="w-4 h-4 cursor-pointer text-xl hover:text-amber-500"
+                />
+            }
+        </div>
+    );    
 }
