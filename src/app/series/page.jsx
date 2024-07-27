@@ -1,5 +1,6 @@
+import MoviesResult from "@/components/MoviesSeries/MoviesResult";
 import { fetchMovies } from "@/lib/tmdb_api_call";
-import SeriesResult from '@/components/MoviesSeries/SeriesResult';
+
 
 
 export default async function Series() {
@@ -10,9 +11,10 @@ export default async function Series() {
       <div>
         <h1 className="text-2xl font-medium">Series list</h1>
         <div>
-          <SeriesResult results={results}/>
+          <MoviesResult results={results} baseUrl="/series"/>
         </div>
       </div>
     )
   }
+
   

@@ -12,7 +12,7 @@ export default async function Movies() {
       <p>Ici sera listé les films</p>
       <MovieFilter />
 
-      <MoviesResult results={results}/>
+      <MoviesResult results={results} baseUrl="/movies"/>
     </div>
   )
 }

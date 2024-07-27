@@ -8,7 +8,7 @@ export default async function Home() {
 
     return (
       <div>
-        <MoviesResult results={results} />
+        <MoviesResult results={results} baseUrl="/movies"/>
       </div>
     );
 } 

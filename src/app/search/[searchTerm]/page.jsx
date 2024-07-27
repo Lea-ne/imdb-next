@@ -4,11 +4,18 @@ const API_KEY = process.env.TMDB_API_KEY;
 export default async function SearchPage({ params }) {
     const searchTerm = params.searchTerm;
 
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchTerm}&language=fr&page=1`);
+    // Fetch movies
+    const movieRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchTerm}&language=fr&page=1`);
+    const movieData = await movieRes.json();
+    const movieResults = movieData.results.map(movie => ({ ...movie, media_type: 'movie' }));
 
-    const data = await res.json();
+    // Fetch TV shows
+    const tvRes = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${searchTerm}&language=fr&page=1`);
+    const tvData = await tvRes.json();
+    const tvResults = tvData.results.map(tv => ({ ...tv, media_type: 'tv' }));
 
-    const results = data.results;
+    // Combine results
+    const results = [...movieResults, ...tvResults];
 
     return (
         <div>
