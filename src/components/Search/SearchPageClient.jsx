@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import MoviesResult from "@/components/MoviesSeries/MoviesResult";
 import SearchFilter from "@/components/Search/SearchFilter";
 
-export default function SearchPageClient({ initialResults, searchTerm }) {
+export default function SearchPageClient({ initialResults }) {
     const [filter, setFilter] = useState('all');
-    const [results, setResults] = useState(initialResults || []);
+    const [results, setResults] = useState(initialResults);
 
     useEffect(() => {
         setResults(initialResults);
@@ -19,7 +19,6 @@ export default function SearchPageClient({ initialResults, searchTerm }) {
     return (
         <div>
             <SearchFilter filter={filter} setFilter={setFilter} />
-            
             {filteredResults.length === 0 ? (
                 <h1>No results found</h1>
             ) : (

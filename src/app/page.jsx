@@ -7,9 +7,12 @@ export default async function Home() {
    const results = await fetchMovies('trending/all/week');
 
     return (
+
       <div>
-        <MoviesResult results={results} baseUrl="/movies"/>
+        {/* <MoviesResult results={results} baseUrl="/movies"/> */}
+        home page
       </div>
+
     );
 } 
 

@@ -11,14 +11,13 @@ async function fetchResults(searchTerm, type) {
 export default async function SearchPage({ params }) {
     const searchTerm = params.searchTerm;
 
-    const [movieResults, tvResults] = await Promise.all([
-        fetchResults(searchTerm, 'movie'),
-        fetchResults(searchTerm, 'tv')
-    ]);
+    // Récupération des résultats pour les films et les séries
+    const movieResults = fetchResults(searchTerm, 'movie');
+    const tvResults = fetchResults(searchTerm, 'tv');
 
-    const initialResults = [...movieResults, ...tvResults];
+    // Fusion des résultats et tri par popularité
+    const combinedResults = [...(await movieResults), ...(await tvResults)]
+        .sort((a, b) => b.popularity - a.popularity);
 
-    return (
-        <SearchPageClient initialResults={initialResults} searchTerm={searchTerm} />
-    );
+    return <SearchPageClient initialResults={combinedResults} />;
 }
