@@ -1,19 +1,16 @@
-import React from 'react'
-import { fetchCredits } from "@/lib/tmdb_api_call";
+import React from 'react';
+import Image from 'next/image';
 
-const mediaType = 'movie';
-const movieID = params.id;
-
-const { cast, crew } = await fetchCredits(mediaType, movieID); // Fetch cast and crew data
-
-
-
-
-export default function CrewCard() {
+export default function CrewCard({ member }) {
   return (
-    <div key={cast.credit_id}>
-        <p>{cast.name} - {cast.job}</p>
+    <div key={member.credit_id} className="crew-card">
+      <Image
+        src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+        width={100}
+        height={150}
+        alt={`Image de ${member.name}`}
+      />
+      <p>{member.name} - {member.job}</p>
     </div>
-  )
+  );
 }
-
