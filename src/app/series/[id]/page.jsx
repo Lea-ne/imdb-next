@@ -2,6 +2,8 @@ import Image from 'next/image';
 import {StarIcon} from '@heroicons/react/24/solid';
 import GenreCard from '@/components/genreCard';
 import { fetchCredits } from "@/lib/tmdb_api_call";
+import ActorCard from '@/components/crew/ActorCard';
+import CrewCard from '@/components/crew/CrewCard';
 
 
 const API_KEY = process.env.TMDB_API_KEY;
@@ -58,19 +60,12 @@ export default async function SeriePage({params}) {
 
         {/* Crew du film */}
 
-          {/* Director */}
-          {director && (
-            <p><strong>Director:</strong> {director.name}</p>
-          )}
-
           {/* Cast */}
           <div>
             <h2>Cast</h2>
             <ul>
-              {cast && cast.slice(0, 10).map((actor) => ( // Limite l'affichage à 10 acteurs par exemple
-                <li key={actor.cast_id}>
-                  {actor.name} dans le role de {actor.character}
-                </li>
+              {cast && cast.slice(0, 10).map((actor) => (
+                <ActorCard key={actor.cast_id} actor={actor} />
               ))}
             </ul>
           </div>
@@ -79,23 +74,11 @@ export default async function SeriePage({params}) {
           <div>
             <h2>Production Crew</h2>
             <ul>
-              {productionCrew && productionCrew.map((member) => (
-                <li key={member.credit_id}>{member.name} - {member.job}</li>
+              {crew && crew.map((member) => (
+                <CrewCard key={member.credit_id} member={member} />
               ))}
             </ul>
           </div>
-
-            {/* Tout le crew sans le directeur, les equipes de prod */}
-            <div>
-            <h2>Full crew</h2>
-            <ul>
-              {FullCrew && FullCrew.map((member) => (
-                <li key={member.credit_id}>{member.name} - {member.job}</li>
-              ))}
-            </ul>
-          </div>
-
-
 
       </div>
     </div>

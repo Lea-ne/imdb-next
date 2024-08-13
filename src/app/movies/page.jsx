@@ -12,7 +12,8 @@ export default async function Movies() {
       <p>Ici sera listé les films</p>
       <MovieFilter />
 
-      <MoviesResult results={results} baseUrl="/movies"/>
+      <MoviesResult results={results}/>
     </div>
   )
 }
+

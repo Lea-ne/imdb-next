@@ -1,48 +1,31 @@
-import React from 'react';
-import MovieCard from '@/components/MoviesSeries/MovieCard';
+// components/MoviesSeries/MovieCard.jsx
+import Image from 'next/image';
+import { StarIcon } from '@heroicons/react/24/solid'
 
-export default async function MoviePage({ params }) {
-  const actorID = params.id;
-  const API_KEY = process.env.TMDB_API_KEY;
-
-  // Récupération des informations de l'acteur
-  const actorRes = await fetch(`https://api.themoviedb.org/3/person/${actorID}?api_key=${API_KEY}`);
-  const actor = await actorRes.json();
-
-  // Récupération des crédits de l'acteur (films et séries)
-  const creditsRes = await fetch(`https://api.themoviedb.org/3/person/${actorID}/combined_credits?api_key=${API_KEY}`);
-  const credits = await creditsRes.json();
-
-  // Calculer l'âge de l'acteur
-  const calculateAge = (birthDate) => {
-    const today = new Date();
-    const birthDateObj = new Date(birthDate);
-    let age = today.getFullYear() - birthDateObj.getFullYear();
-    const monthDiff = today.getMonth() - birthDateObj.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
-      age--;
-    }
-    return age;
-  };
-
-  const actorAge = actor.birthday ? calculateAge(actor.birthday) : 'N/A';
-
+export default function MovieCard({ result, url }) {
   return (
     <div>
-      <h1>{actor.name}</h1>
-      <p>Age: {actorAge}</p>
-      <p>Biographie : {actor.biography || 'Non disponible'}</p>
+      <a href={url} className='group'>
+        <Image
+          src={`https://image.tmdb.org/t/p/original/${result.backdrop_path || result.poster_path}`}
+          width={200}
+          height={300}
+          className='rounded-s group-hover:opacity-65 transition-opacity duration-300'
+          alt="Screenshots of the dashboard project showing desktop version"
+        />
+        <div>
 
-      <h2>Filmographie</h2>
-      <div className="grid grid-cols-2 gap-4">
-        {credits.cast.map((credit) => (
-          <MovieCard
-            key={credit.id}
-            result={credit}
-            url={`/movie/${credit.id}`}
-          />
-        ))}
-      </div>
+          {/* titre du film */}
+          <h4>{result.title || result.name}</h4>
+
+          {/* notation */}
+          <div className='flex'>
+            <StarIcon className='w-4' />
+            {result.vote_average ? result.vote_average.toFixed(1) : 'no grade'}
+          </div>
+
+        </div>
+      </a>
     </div>
-  );
+  )
 }
