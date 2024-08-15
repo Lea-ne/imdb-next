@@ -8,7 +8,7 @@ export default function MovieCard({ result, url }) {
     <div>
       <a href={url} className='group'>
         <Image
-          src={`https://image.tmdb.org/t/p/original/${result.backdrop_path || result.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
           width={200}
           height={300}
           className='rounded-s group-hover:opacity-65 transition-opacity duration-300'

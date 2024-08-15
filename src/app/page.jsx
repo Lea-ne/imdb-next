@@ -2,6 +2,7 @@ import MoviesResult from "@/components/MoviesSeries/MoviesResult";
 import { fetchMovies } from "@/lib/tmdb_api_call";
 import HomePageCarousel from "@/components/homePage/HomePageCarousel/HomePageCarousel";
 import TopTrendingMovie from "@/components/homePage/TopTrending/TopTrendingMovie";
+import ListingRow from "@/components/homePage/ListingRow/ListingRow";
 // import TopTrendingMovie from "@/components/homePage/TopTrending/TopTrendingMovie";
 // import { fetchTopRatedMovie } from "@/lib/tmdb_api_call"
 
@@ -19,8 +20,13 @@ export default async function Home() {
     <div>
       <HomePageCarousel />
 
-      <div className="mt-20 mb-20">
+      <div className="mt-16 mb-16">
         <TopTrendingMovie/>
+      </div>
+
+
+      <div className="mt-16 mb-16">
+        <ListingRow />
       </div>
 
       

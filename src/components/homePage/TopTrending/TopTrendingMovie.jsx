@@ -1,6 +1,6 @@
 import React from 'react'
 import TopTrendingMovieCard from './TopTrendingMovieCard'
-import { fetchTopRatedMovie } from "@/lib/tmdb_api_call"
+import { fetchMovies } from "@/lib/tmdb_api_call"
 import styles from './TopTrendingMovieCard.module.css'
 import { HeartIcon } from '@heroicons/react/24/solid'
 
@@ -8,19 +8,24 @@ import { HeartIcon } from '@heroicons/react/24/solid'
 
 export default async function TopTrendingMovie() {
 
-    const topMovies = await fetchTopRatedMovie();
 
-    // Trier les films par date de sortie, du plus récent au plus ancien
-    const sortedTopMovies = topMovies.sort((a, b) => b.popularity - a.popularity);
+    const topMovies = await fetchMovies('movie/top_rated');
 
-    // Récupérer les posters et les noms des trois premiers films après le tri
-    const topThreeMovies = sortedTopMovies.slice(0, 3);
+    // Trier les films par date de sortie en ordre décroissant (les plus récents en premier)
+    const sortedMovies = topMovies.sort((a, b) => {
+        const dateA = new Date(a.release_date);
+        const dateB = new Date(b.release_date);
+        return dateB - dateA; // Ordre décroissant
+    });
+
+    // Obtenir les trois premiers films les plus récents
+    const topThreeMovies = sortedMovies.slice(0, 3);
 
 
   return (
-    <div className={styles.topMoviesection}>
+    <div className="px-16">
 
-        <h1 className={styles.titleTopMovies}>Top of the month<HeartIcon className='ml-2 h-5 w-5 text-red-600 inline-flex' /></h1>
+        <h1 className="text-2xl font-semibold pb-8">Top of the month<HeartIcon className='ml-2 h-5 w-5 text-red-600 inline-flex' /></h1>
 
         <div className={styles.topMovieContainer}>
             <TopTrendingMovieCard 
