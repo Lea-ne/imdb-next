@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* provider is used for the dark mode */}
         <Providers>
-          <Header />
+          <Header/>
           {children}
         </Providers>
         </body>

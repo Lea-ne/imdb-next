@@ -44,3 +44,23 @@ export async function fetchCredits(mediaType, movieID) {
     };
   }
 }
+
+
+export async function fetchTopRatedMovie() {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data.results;
+  } 
+  
+  catch (error) {
+    console.error('Caught Error:', error);
+    return [];
+  }
+}
+

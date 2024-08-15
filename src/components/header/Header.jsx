@@ -7,7 +7,7 @@ import SearchBox  from '../Search/SearchBox';
 
 export default function Header() {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between relative z-10 text-cyan-50">
 
       {/* Logo */}
       <div>

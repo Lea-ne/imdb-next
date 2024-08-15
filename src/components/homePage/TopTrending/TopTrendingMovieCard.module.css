@@ -1,0 +1,45 @@
+.topMovieCard{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.numerImage{
+    width: 150px;
+    height: auto;
+    margin-right: -60px;
+}
+
+.topMoviePoster{
+    width: 340px;
+    height: 210px;
+}
+
+.topMoviePoster>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image se remplit sans se déformer */
+    object-position: center; /* Centre l'image à l'intérieur de la div */
+    border-radius: 10px;
+    box-shadow: -20px 0 20px 0 #080715bd;
+}
+
+
+
+/* section */
+.topMoviesection{
+    padding: 0 70px;
+}
+
+/* Card container */
+.topMovieContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titleTopMovies{
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 30px;
+}

@@ -1,6 +1,7 @@
 // components/MoviesSeries/MovieCard.jsx
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid'
+import GradeStar from '../ui/GradeStar';
 
 export default function MovieCard({ result, url }) {
   return (
@@ -19,10 +20,10 @@ export default function MovieCard({ result, url }) {
           <h4>{result.title || result.name}</h4>
 
           {/* notation */}
-          <div className='flex'>
-            <StarIcon className='w-4' />
-            {result.vote_average ? result.vote_average.toFixed(1) : 'no grade'}
-          </div>
+          <GradeStar 
+            icon={<StarIcon className="w-4 text-orange-500" />} 
+            grade={result.vote_average ? result.vote_average.toFixed(1) : 'no grade'}
+          />
 
         </div>
       </a>
